@@ -1,0 +1,74 @@
+import { Cable, Cloud, Code2, Cpu, Database, LockKeyhole, MonitorCog, Network, Server, ShieldCheck, Wrench } from 'lucide-react'
+
+export const services = [
+  { slug: 'managed-it-services', title: 'Managed IT Support', description: 'Practical, responsive support that keeps day-to-day technology dependable.', icon: MonitorCog },
+  { slug: 'network-installation', title: 'Network Infrastructure', description: 'Structured networks, Wi-Fi, routing, and secure connectivity for growing teams.', icon: Network },
+  { slug: 'server-installation', title: 'Server & Virtualization', description: 'On-premises server deployment, administration, backup, and virtualization.', icon: Server },
+  { slug: 'cybersecurity', title: 'Cybersecurity & Firewall', description: 'Layered protection, firewall configuration, access controls, and risk reduction.', icon: ShieldCheck },
+  { slug: 'web-development', title: 'Website Creation & Web Development', description: 'Professional business website creation, responsive web development, and custom tools designed around how your team works.', icon: Code2 },
+  { slug: 'microsoft-365', title: 'Microsoft 365 & Cloud', description: 'Cloud productivity, identity, collaboration, and migration support.', icon: Cloud },
+  { slug: 'computer-repair', title: 'Computer Repair & Maintenance', description: 'Reliable computer repair, laptop troubleshooting, hardware upgrades, malware cleanup, and maintenance for home and business users.', icon: Wrench },
+  { slug: 'it-consulting', title: 'IT Consulting', description: 'Straightforward technical direction for infrastructure and business decisions.', icon: Cpu },
+]
+
+export const processSteps = [
+  ['01', 'Consultation & assessment', 'We understand your current setup, priorities, and constraints.'],
+  ['02', 'Solution planning', 'You receive a practical scope with clear recommendations.'],
+  ['03', 'Implementation & testing', 'We configure, deploy, and validate the solution carefully.'],
+  ['04', 'Documentation & support', 'Your team gets a handover that makes future support easier.'],
+]
+
+export const techStack = ['MikroTik', 'Cisco', 'TP-Link Omada', 'Windows Server', 'Ubuntu Linux', 'VMware ESXi', 'Microsoft 365', 'PostgreSQL', 'React', 'Node.js', 'Cloudflare', 'Docker']
+
+export const faqs = [
+  ['Do you provide IT support for small businesses?', 'Yes. We work with growing businesses that need reliable technical support without building a large internal IT team.'],
+  ['Can you configure MikroTik and Cisco networks?', 'Yes. Network planning, routing, firewall policies, Wi-Fi, and documentation can be scoped around your environment.'],
+  ['Do you offer monthly IT maintenance contracts?', 'Maintenance plans can be tailored to your equipment, response needs, and preferred support model.'],
+  ['Can you manage Windows and Linux servers?', 'Yes. We can assist with installation, configuration, updates, access management, monitoring, and backups.'],
+]
+
+export const navGroups = [{ label: 'Services', links: services.slice(0, 5).map(({ slug, title }) => ({ slug: `/services/${slug}`, title })) }, { label: 'Solutions', links: [{ slug: '/solutions/small-business-it', title: 'Small business IT' }, { slug: '/solutions/corporate-it-infrastructure', title: 'Corporate infrastructure' }, { slug: '/solutions/office-network-setup', title: 'Office network setup' }] }]
+
+export const serviceDetails = [
+  ...services.map((service) => ({ ...service, body: `A practical ${service.title.toLowerCase()} service shaped around your environment, priorities, and team. We start by understanding what is already in place, then define a clear scope for the work, testing, handover, and ongoing support.`, points: ['Clear scope and technical recommendations', 'Documented implementation and handover', 'Support options matched to your operating needs'] })),
+  { slug: 'mikrotik-configuration', title: 'MikroTik Configuration', description: 'Routing, firewall, VLAN, VPN, and failover configuration for business networks.', icon: Network, body: 'Configure MikroTik routers and gateways around real traffic, access, and resilience requirements.', points: ['RouterOS configuration and hardening', 'VLANs, routing, VPN, and firewall rules', 'Multi-ISP failover planning and testing'] },
+  { slug: 'cisco-network-solutions', title: 'Cisco Network Solutions', description: 'Structured switching, routing, and network administration for business environments.', icon: Cable, body: 'Plan and maintain Cisco network components with documentation that makes future changes safer.', points: ['Switching and routing setup', 'Network segmentation and access control', 'Configuration documentation and review'] },
+  { slug: 'windows-server', title: 'Windows Server', description: 'Installation, administration, identity, file services, and maintenance.', icon: Server, body: 'Build a dependable Windows Server foundation for identity, file sharing, business applications, and backup.', points: ['Active Directory and access management', 'File, print, and application services', 'Updates, backup planning, and documentation'] },
+  { slug: 'linux-server', title: 'Linux Server', description: 'Linux administration for web services, applications, databases, and infrastructure.', icon: Server, body: 'Deploy and maintain Linux servers with sensible access control, updates, monitoring, and recovery planning.', points: ['Ubuntu and common Linux administration', 'Web, application, and database hosting', 'Hardening, backups, and operational handover'] },
+  { slug: 'virtualization', title: 'Virtualization', description: 'Virtual machine planning and infrastructure consolidation.', icon: Database, body: 'Use virtualization where it improves manageability, resilience, and resource use without adding unnecessary complexity.', points: ['VMware and virtual infrastructure planning', 'Workload sizing and migration planning', 'Backup, recovery, and lifecycle documentation'] },
+  { slug: 'firewall-configuration', title: 'Firewall Configuration', description: 'Business firewall rules, segmentation, and secure remote access.', icon: LockKeyhole, body: 'Create understandable firewall policies that protect business systems while keeping legitimate work moving.', points: ['Policy review and rule cleanup', 'Segmentation and secure administration', 'VPN and remote-access configuration'] },
+  { slug: 'vpn-solutions', title: 'VPN Solutions', description: 'Secure connectivity for remote teams, sites, and service access.', icon: LockKeyhole, body: 'Connect people and locations with a VPN design based on identity, traffic, and operational requirements.', points: ['Site-to-site and remote access VPNs', 'Access control and least-privilege design', 'Connection testing and handover'] },
+  { slug: 'cloud-hosting', title: 'Cloud Hosting', description: 'Cloud infrastructure planning, migrations, and operational support.', icon: Cloud, body: 'Move suitable workloads to cloud hosting with attention to access, backup, cost, and maintainability.', points: ['Workload and hosting assessment', 'Migration planning and validation', 'Access, backup, and cost controls'] },
+  { slug: 'custom-software', title: 'Custom Software', description: 'Focused internal tools and business workflows built around your process.', icon: Code2, body: 'Design and build software that supports a defined business workflow instead of adding generic complexity.', points: ['Requirements discovery and workflow mapping', 'Maintainable web application development', 'Testing, documentation, and handover'] },
+  { slug: 'database-management', title: 'Database Management', description: 'Database setup, maintenance, backup, and performance support.', icon: Database, body: 'Keep business data systems structured, maintainable, and recoverable.', points: ['PostgreSQL setup and maintenance', 'Backup and restore planning', 'Access control and performance review'] },
+  { slug: 'it-monitoring', title: 'IT Monitoring', description: 'Visibility into system health, availability, and operational issues.', icon: MonitorCog, body: 'Create useful operational visibility so issues can be acted on before they become business interruptions.', points: ['Health and availability monitoring', 'Alert priorities and escalation paths', 'Reporting and operational documentation'] },
+  { slug: 'voip-solutions', title: 'VoIP Solutions', description: 'Business voice and call-routing support for connected teams.', icon: Cable, body: 'Plan voice services around connectivity, users, call flows, and support requirements.', points: ['Voice requirements and call-flow planning', 'Network readiness and configuration', 'User handover and support documentation'] },
+]
+
+export const solutions = [
+  { slug: 'small-business-it', title: 'Small Business IT', description: 'A practical technology foundation for teams that need to stay focused on their work.', points: ['Reliable support without unnecessary complexity', 'Secure network, devices, and cloud access', 'A roadmap that can grow with the business'] },
+  { slug: 'corporate-it-infrastructure', title: 'Corporate IT Infrastructure', description: 'Structured infrastructure planning for larger or distributed business environments.', points: ['Standardized systems and documentation', 'Network, server, and security coordination', 'Clear ownership and support workflows'] },
+  { slug: 'office-network-setup', title: 'Office Network Setup', description: 'Business-ready connectivity for new offices, relocations, and upgrades.', points: ['Structured cabling and Wi-Fi planning', 'Routing, switching, and segmentation', 'Testing, labeling, and handover'] },
+  { slug: 'server-management', title: 'Server Management', description: 'Ongoing administration for servers that support business applications and data.', points: ['Updates and access administration', 'Backup and recovery planning', 'Documented maintenance and change review'] },
+  { slug: 'business-continuity', title: 'Business Continuity', description: 'Plan for recovery when a system, device, or connection fails.', points: ['Identify critical systems and dependencies', 'Backup and recovery priorities', 'Practical response documentation'] },
+  { slug: 'remote-work-infrastructure', title: 'Remote Work Infrastructure', description: 'Secure, supportable access for teams working across locations.', points: ['Identity and access controls', 'VPN and cloud collaboration planning', 'Device and support considerations'] },
+]
+
+export const industries = [
+  ['corporate-offices', 'Corporate Offices', 'Keep workplace connectivity, access, and business systems dependable as teams grow.'],
+  ['small-medium-businesses', 'Small and Medium Businesses', 'Build a practical IT foundation with support that matches your resources.'],
+  ['retail-commercial', 'Retail and Commercial Establishments', 'Support the connectivity, devices, and systems that keep daily operations moving.'],
+  ['schools-education', 'Schools and Educational Institutions', 'Plan networks, access, and support around staff, learners, and shared environments.'],
+  ['professional-services', 'Professional Service Firms', 'Protect the systems and information your teams rely on to serve clients.'],
+  ['startups-growing-businesses', 'Startups and Growing Businesses', 'Make early infrastructure decisions that stay maintainable as the business changes.'],
+]
+
+export const articles = [
+  { slug: 'office-network-planning-checklist', title: 'A practical office network planning checklist', category: 'Network infrastructure', excerpt: 'What to clarify before buying equipment or asking someone to configure your office network.' },
+  { slug: 'business-backup-basics', title: 'Business backup basics: what to document first', category: 'Business continuity', excerpt: 'A useful starting point for understanding what needs to be backed up and how recovery should work.' },
+  { slug: 'mikrotik-firewall-review', title: 'Questions to ask during a MikroTik firewall review', category: 'Security', excerpt: 'A clear review should look at access, rules, segmentation, and how changes are documented.' },
+]
+
+export const projects = [
+  { slug: 'project-template', title: 'Project story template', industry: 'Add verified client project', challenge: 'Client-approved project details should be added here.', solution: 'Describe the implemented solution only after it has been confirmed.', result: 'Publish measured, verified outcomes when available.' },
+]

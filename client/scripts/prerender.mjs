@@ -1,0 +1,10 @@
+import fs from 'node:fs/promises'
+import path from 'node:path'
+import { fileURLToPath } from 'node:url'
+import { render } from '../dist/server/entry-server.js'
+
+const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..')
+const template = await fs.readFile(path.join(root, 'dist/index.html'), 'utf8')
+const routes = ['/', '/about', '/services', '/solutions', '/industries', '/projects', '/blog', '/contact', '/request-quote', '/privacy-policy', '/terms-of-service', '/services/managed-it-services', '/services/network-installation', '/services/server-installation', '/services/cybersecurity', '/services/web-development', '/services/microsoft-365', '/services/computer-repair', '/services/it-consulting', '/services/mikrotik-configuration', '/services/cisco-network-solutions', '/services/windows-server', '/services/linux-server', '/services/virtualization', '/services/firewall-configuration', '/services/vpn-solutions', '/services/cloud-hosting', '/services/custom-software', '/services/database-management', '/services/it-monitoring', '/services/voip-solutions', '/solutions/small-business-it', '/solutions/corporate-it-infrastructure', '/solutions/office-network-setup', '/solutions/server-management', '/solutions/business-continuity', '/solutions/remote-work-infrastructure', '/industries/corporate-offices', '/industries/small-medium-businesses', '/industries/retail-commercial', '/industries/schools-education', '/industries/professional-services', '/industries/startups-growing-businesses', '/blog/office-network-planning-checklist', '/blog/business-backup-basics', '/blog/mikrotik-firewall-review']
+for (const route of routes) { const result = render(route); const document = template.replace(/<title>[\s\S]*?<\/title>/, '').replace('<head>', `<head>${result.head}`).replace('<div id="root"></div>', `<div id="root">${result.html}</div>`); const output = route === '/' ? path.join(root, 'dist/index.html') : path.join(root, `dist${route}/index.html`); await fs.mkdir(path.dirname(output), { recursive: true }); await fs.writeFile(output, document) }
+console.log(`Pre-rendered ${routes.length} public routes`)
