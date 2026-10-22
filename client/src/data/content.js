@@ -78,11 +78,17 @@ export const articles = [
 ]
 
 export const projects = [
-  { slug: 'project-template', title: 'Project story template', industry: 'Add verified client project', challenge: 'Client-approved project details should be added here.', solution: 'Describe the implemented solution only after it has been confirmed.', result: 'Publish measured, verified outcomes when available.' },
+  { slug: 'project-template', title: 'Project story template', industry: 'Verified client stories', challenge: 'Client-approved project details should be added here.', solution: 'Describe the implemented solution only after it has been confirmed.', result: 'Publish measured, verified outcomes when available.' },
 ]
 
 export const portfolioItems = [
-  { slug: 'business-network-installation', title: 'Business network installation', category: 'Network infrastructure', image: '/images/service-network-installation.png', summary: 'Structured cabling, rack organization, switching, Wi-Fi, and documentation for a dependable office network.', tags: ['Structured cabling', 'Network setup', 'Documentation'] },
-  { slug: 'board-level-device-repair', title: 'Laptop board-level repair', category: 'Device repair', image: '/images/service-board-repair.png', summary: 'Careful diagnostics and repair assessment for power, charging, no-boot, and component-level device faults.', tags: ['Laptop repair', 'Diagnostics', 'Hardware service'] },
-  { slug: 'smart-entry-installation', title: 'Smart entry installation', category: 'Smart access', image: '/images/service-smart-lock.png', summary: 'Smart door lock installation with access setup, user handover, and a practical recovery plan.', tags: ['Smart lock', 'Installation', 'Access setup'] },
+  { slug: 'business-network-installation', title: 'Business network installation', category: 'Network infrastructure', industry: 'Office & commercial', image: '/images/case-network-rack.png', summary: 'Structured cabling, rack organization, switching, Wi-Fi, and documentation for a dependable office network.', tags: ['Structured cabling', 'Network setup', 'Documentation'], evidence: ['Labeled rack and patching plan', 'Connectivity testing and handover', 'Documented topology for future changes'] },
+  { slug: 'board-level-device-repair', title: 'Laptop board-level repair', category: 'Device repair', industry: 'Individuals & teams', image: '/images/case-board-repair.png', summary: 'Careful diagnostics and repair assessment for power, charging, no-boot, and component-level device faults.', tags: ['Laptop repair', 'Diagnostics', 'Hardware service'], evidence: ['Fault assessment before intervention', 'Component-level repair decision', 'Verified device handover or recovery recommendation'] },
+  { slug: 'smart-entry-installation', title: 'Smart entry installation', category: 'Smart access', industry: 'Home & business', image: '/images/service-smart-lock.png', summary: 'Smart door lock installation with access setup, user handover, and a practical recovery plan.', tags: ['Smart lock', 'Installation', 'Access setup'], evidence: ['Door and lock compatibility check', 'Access enrolment and testing', 'Recovery method documented at handover'] },
+]
+
+export const proofMetrics = [
+  ['01', 'Outcome-led scope', 'Every engagement starts with the problem and the result the system needs to support.'],
+  ['02', 'Documented handover', 'Configuration notes and next steps make the work easier to maintain.'],
+  ['03', 'Tested before handoff', 'Connectivity, access, and device changes are checked before sign-off.'],
 ]

@@ -29,9 +29,22 @@ Modernize every A2NY IT WORKS page into a confident, contemporary technology-par
 - Refresh Contact with trust/proof context and a clear post-submission expectation.
 - Preserve existing routes, content, responsive behavior, and reduced-motion support.
 
+## Completion update
+
+- Added shared editorial tokens, accessible interaction states, responsive layouts, and reduced-motion handling across the site.
+- Expanded Services into customer-problem groups with proof-oriented service guidance.
+- Added outcome-led journeys to Solutions and context mapping to Industries.
+- Rebuilt Portfolio as a filterable proof library with responsive imagery, service tags, and evidence lists.
+- Rebuilt Resources/Blog as a searchable, filterable editorial hub.
+- Expanded About with point of view, operating principles, evidence, and partner context.
+- Added two original branded technical images at `client/public/images/case-network-rack.png` and `client/public/images/case-board-repair.png`; retained the existing smart-access image until a suitable approved replacement is available.
+- Verified build/prerender, browser QA, server tests, and whitespace checks.
+
 ## Acceptance criteria
 
 - All existing routes still build and prerender.
 - Home and Contact visibly use the shared modern system.
 - Forms and navigation retain keyboard/focus accessibility.
 - Existing automated QA remains green.
+- Portfolio and Resources support usable filters/search without requiring a backend.
+- Claims remain explicit about representative work versus client-approved measured outcomes.
