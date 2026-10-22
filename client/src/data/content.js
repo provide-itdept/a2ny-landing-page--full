@@ -31,7 +31,7 @@ export const faqs = [
   ['Can you manage Windows and Linux servers?', 'Yes. We can assist with installation, configuration, updates, access management, monitoring, and backups.'],
 ]
 
-export const navGroups = [{ label: 'Services', links: services.slice(0, 5).map(({ slug, title }) => ({ slug: `/services/${slug}`, title })) }, { label: 'Solutions', links: [{ slug: '/solutions/small-business-it', title: 'Small business IT' }, { slug: '/solutions/corporate-it-infrastructure', title: 'Corporate infrastructure' }, { slug: '/solutions/office-network-setup', title: 'Office network setup' }] }]
+export const navGroups = [{ label: 'Services', links: services.map(({ slug, title }) => ({ slug: `/services/${slug}`, title })) }, { label: 'Solutions', links: [{ slug: '/solutions/small-business-it', title: 'Small business IT' }, { slug: '/solutions/corporate-it-infrastructure', title: 'Corporate infrastructure' }, { slug: '/solutions/office-network-setup', title: 'Office network setup' }] }]
 
 export const serviceDetails = [
   ...services.map((service) => ({ ...service, body: `A practical ${service.title.toLowerCase()} service shaped around your environment, priorities, and team. We start by understanding what is already in place, then define a clear scope for the work, testing, handover, and ongoing support.`, points: ['Clear scope and technical recommendations', 'Documented implementation and handover', 'Support options matched to your operating needs'] })),
