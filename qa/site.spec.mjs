@@ -557,3 +557,59 @@ test('dropdown navigation identifies only the current page after route changes',
   await expect(first).not.toHaveAttribute('aria-current', 'page');
   await expect(nav.locator('[aria-current="page"]')).toHaveCount(1);
 });
+
+test('contact and quote expose required fields before validation', async ({ page }) => {
+  for (const path of ['/contact', '/request-quote']) {
+    await page.goto(path);
+    const form = page.locator('.contact-form');
+    for (const name of ['Full name', 'Email address', 'Contact number', path === '/contact' ? 'How can we help?' : 'Project description']) {
+      await expect(form.getByLabel(name)).toHaveAttribute('aria-required', 'true');
+      await expect(form.getByLabel(name)).toHaveAttribute('aria-invalid', 'false');
+    }
+    await expect(form.getByLabel('Company name')).toHaveAttribute('aria-required', path === '/request-quote' ? 'true' : 'false');
+    await expect(form.getByRole('checkbox')).toHaveAttribute('aria-required', 'true');
+    await expect(form.getByLabel('Customer type')).toHaveAttribute('aria-required', 'true');
+    await form.getByRole('button', { name: /Send/ }).click();
+    await expect(form.getByLabel('Full name')).toBeFocused();
+    await expect(form.getByLabel('Full name')).toHaveAttribute('aria-required', 'true');
+    await expect(form.getByLabel('Full name')).toHaveAttribute('aria-invalid', 'true');
+  }
+});
+
+
+test('portfolio filter exposes its selected state', async ({ page }) => {
+  await page.goto('/portfolio');
+  const filters = page.getByRole('group', { name: 'Filter portfolio' }).getByRole('button');
+  await expect(filters.first()).toHaveAttribute('aria-pressed', 'true');
+  await filters.nth(1).click();
+  await expect(filters.first()).toHaveAttribute('aria-pressed', 'false');
+  await expect(filters.nth(1)).toHaveAttribute('aria-pressed', 'true');
+});
+
+
+test('portfolio keyboard filtering announces results and resets', async ({ page }) => {
+  await page.goto('/portfolio')
+  const group = page.getByRole('group', { name: 'Filter portfolio' })
+  const buttons = group.getByRole('button')
+  const cards = page.locator('.portfolio-card')
+  const total = await cards.count()
+  const status = page.getByRole('status')
+  await expect(status).toHaveText(`Showing ${total} ${total === 1 ? 'project' : 'projects'} — All work.`)
+  await expect(status).toHaveAttribute('aria-live', 'polite')
+  await expect(status).toHaveAttribute('aria-atomic', 'true')
+  const category = await buttons.nth(1).innerText()
+  await buttons.nth(1).focus()
+  await page.keyboard.press('Enter')
+  await expect(buttons.nth(1)).toHaveAttribute('aria-pressed', 'true')
+  await expect(buttons.nth(1)).toBeFocused()
+  await expect(status).toContainText(category)
+  const filtered = await cards.count()
+  expect(filtered).toBeLessThan(total)
+  await expect(status).toHaveText(`Showing ${filtered} ${filtered === 1 ? 'project' : 'projects'} — ${category}.`)
+  await buttons.first().focus()
+  await page.keyboard.press('Space')
+  await expect(buttons.first()).toBeFocused()
+  await expect(buttons.first()).toHaveAttribute('aria-pressed', 'true')
+  await expect(cards).toHaveCount(total)
+  await expect(status).toContainText('All work')
+})
