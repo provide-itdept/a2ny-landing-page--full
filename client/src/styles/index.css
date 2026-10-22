@@ -82,3 +82,15 @@ html{overflow-x:hidden}body{overflow-x:hidden;background:var(--warm);color:var(-
 .service-card,.industry-card,.solution-card,.article-card,.project-card,.detail-card,.contact-form,.portfolio-card,.proof-card,.pathway-card{border-radius:var(--radius-card)}.contact-form input,.contact-form textarea,.contact-form select{width:100%;max-width:100%;min-width:0}.contact-form textarea{resize:vertical}.checkbox{min-width:0}.checkbox input{width:auto}.contact-form .button{max-width:100%}
 .page-hero,.premium-hero{background-color:var(--surface-soft)}.page-hero p,.hero-lead,.section-heading p,.article-card p,.solution-card p,.industry-card p{max-width:65ch}.hero-photo-card img,.portfolio-card>img,.service-promo-card img{max-width:none}
 @media (max-width:700px){.container{width:calc(100% - 32px);max-width:560px}.main-nav{max-width:100vw}.main-nav .button{white-space:normal}.page-hero h1,.hero h1{max-width:100%;overflow-wrap:anywhere}.contact-form{padding:20px 16px}.contact-form .checkbox{display:grid!important;grid-template-columns:auto minmax(0,1fr)!important}.contact-form .checkbox input{margin-left:0}.contact-proof span{min-width:0}.portfolio-intro,.resource-controls{min-width:0}.hero-photo-card{max-width:100%}}
+
+/* Calm high-contrast surfaces: use white and the reference navy instead of pale blue washes. */
+:root{--warm:#fff;--surface-soft:#fff;--surface-blue:#fff;--line:#d7dee8;--muted:#526174;--page-navy:#08111f}
+body{background:#fff}
+.site-header{background:rgba(255,255,255,.94)}
+.site-footer,.dark-section{background:var(--page-navy)}
+.trust-strip,.services-section,.process-section,.expertise-section,.personal-section,.faq-section,.why-section,.home-work-section,.pathway-section,.portfolio-section,.contact-section,.proof-section,.about-evidence,.solution-journey,.service-detail-process{background:#fff}
+.page-hero{background:#fff}
+.trust-strip{border-color:var(--line)}
+.bento-1{background:#fff;border-color:var(--line)}
+.process-section{background:#fff}
+.expertise-card>div span,.pathway-card,.service-card,.industry-card,.solution-card,.article-card,.project-card{background:#fff}
