@@ -15,16 +15,12 @@ const servicePathways = [
 ]
 
 function InfrastructureVisual() {
-  return <div className="infra-visual" aria-label="Illustration of a managed business IT environment">
-    <div className="infra-orbit orbit-one" /><div className="infra-orbit orbit-two" />
-    <div className="infra-line line-a" /><div className="infra-line line-b" /><div className="infra-line line-c" />
-    <div className="infra-node node-internet"><span className="node-pulse" />Internet</div>
-    <div className="infra-node node-firewall"><ShieldCheck size={18} /><span>Firewall</span><small>protected</small></div>
-    <div className="infra-node node-switch"><Network size={18} /><span>Managed switch</span><small>connected</small></div>
-    <div className="infra-node node-server"><Server size={18} /><span>Server room</span><small>documented</small></div>
-    <div className="infra-node node-cloud"><Cloud size={18} /><span>Cloud access</span><small>available</small></div>
-    <div className="infra-status"><span className="status-dot" /> SYSTEMS IN ORDER <b>01</b></div>
-    <div className="infra-caption"><span>A2NY / INFRASTRUCTURE</span><b>Build. Secure. Support.</b></div>
+  return <div className="hero-photo-card">
+    <img src="/images/case-network-rack.png" alt="IT specialist connecting a business network rack" />
+    <div className="hero-photo-shade" />
+    <div className="hero-photo-label"><span className="status-dot" /> A2NY / FIELD SUPPORT</div>
+    <div className="hero-photo-caption"><strong>Technology that keeps work moving.</strong><span>Networks · websites · support</span></div>
+    <div className="hero-photo-proof"><Check size={15} /> Practical recommendations, clearly explained</div>
   </div>
 }
 
@@ -36,14 +32,14 @@ export default function Home() {
     <section className="premium-hero"><div className="container hero-grid">
       <motion.div initial={reducedMotion ? false : "hidden"} animate="show" variants={revealVariant}>
         <span className="eyebrow">Business technology <i /> Home & office support <i /> Philippines</span>
-        <h1>Reliable technology support for <em>business and home.</em></h1>
-        <p className="hero-lead">From a website that earns trust to the computer, network, and security systems your team relies on, we make technology easier to use, maintain, and improve.</p>
+        <h1>Technology that helps your business <em>move forward.</em></h1>
+        <p className="hero-lead">Professional websites, responsive IT support, and secure systems for businesses that need technology to simply work.</p>
         <div className="hero-actions"><Button to="/request-quote" aria-label="Get a free consultation">Request a consultation <ArrowRight size={17} /></Button><Button to="/services" variant="text" aria-label="Explore our services">Find a service <ArrowRight size={17} /></Button></div>
-        <p className="hero-note"><span /> Start with the problem. We’ll help define the right next step.</p>
+        <p className="hero-note"><span /> Clear advice. Practical delivery. Support after launch.</p>
       </motion.div>
       <motion.div className="hero-visual-wrap" initial={reducedMotion ? false : { opacity: 0, scale: .97 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: reducedMotion ? 0 : .7, delay: reducedMotion ? 0 : .12 }}><InfrastructureVisual /></motion.div>
     </div></section>
-    <section className="trust-strip"><div className="container trust-inner"><p>From your next website to the computer your team relies on.</p><div className="trust-list"><Link to="/services/web-development">Web development</Link><Link to="/services/computer-repair">Computer repair</Link>{['MikroTik', 'Microsoft 365', 'Windows Server', 'Cloudflare'].map(item => <span key={item}>{item}</span>)}</div></div></section>
+    <section className="trust-strip"><div className="container trust-inner"><p>One reliable partner for your digital presence and day-to-day technology.</p><div className="trust-list"><span><Check size={15} /> Business websites</span><span><Check size={15} /> IT support</span><span><Check size={15} /> Networks & security</span><span><Check size={15} /> Home technology</span></div></div></section>
     <section className="section pathway-section"><div className="container"><SectionHeading eyebrow="Start here" title="What do you need help with?" text="Choose the closest fit and we’ll take you to a practical starting point." align="center" /><div className="pathway-grid">{servicePathways.map(({ title, text, links, icon: Icon }) => <article className="pathway-card" key={title}><span className="pathway-icon"><Icon size={22} /></span><h2>{title}</h2><p>{text}</p><div className="pathway-links">{links.map(([label, href]) => <Link to={href} key={href}>{label}<ArrowRight size={14} /></Link>)}</div></article>)}</div></div></section>
     <section className="section services-section"><div className="container"><div className="section-intro-row"><SectionHeading eyebrow="What we do" title="Websites and computer support, built around real needs." text="Lead with a stronger online presence or get dependable help for the technology you already use. Our wider IT expertise is here when you need it." /><Link to="/services" className="text-link">View all services <ArrowRight size={16} /></Link></div><div className="service-bento">{services.map((service, index) => { const Icon = icons[index] || service.icon; const featured = ['web-development', 'computer-repair'].includes(service.slug); return <Link className={`bento-card bento-${index + 1} ${featured ? 'featured-service' : ''}`} to={`/services/${service.slug}`} key={service.slug}><span className="bento-icon"><Icon size={21} /></span><span className="bento-kicker">{featured ? 'FEATURED / SERVICE' : `0${index + 1} / SERVICE`}</span><h3>{service.title}</h3><p>{service.description}</p><span className="card-link">Explore service <ArrowRight size={16} /></span>{index < 4 && <span className="bento-rule" />}</Link> })}</div></div></section>
     <section className="section dark-section solutions-section"><div className="container split-section"><div><span className="eyebrow light">For growing teams</span><h2>Enterprise-grade IT expertise, without the enterprise overhead.</h2><p>Build, secure, and maintain the systems your business relies on — with practical solutions designed around your operations.</p><Button to="/solutions/small-business-it" variant="light">Discuss your IT requirements <ArrowRight size={17} /></Button></div><div className="architecture-card"><div className="architecture-label">CONCEPTUAL BUSINESS ENVIRONMENT</div><div className="architecture-flow"><span>Internet</span><ArrowRight /><span>Firewall</span><ArrowRight /><span>Switch</span></div><div className="architecture-branches"><span><Server size={17} /> Servers</span><span><Network size={17} /> Workstations</span><span><Cloud size={17} /> Wi-Fi / Cloud</span></div><div className="benefit-grid">{['Reduced operational downtime', 'Stronger network security', 'Better infrastructure visibility', 'Clear technical documentation'].map(item => <div key={item}><Check size={15} />{item}</div>)}</div></div></div></section>
