@@ -89,7 +89,7 @@ body{background:#fff}
 .site-header{background:rgba(255,255,255,.94)}
 .site-footer,.dark-section{background:var(--page-navy)}
 .trust-strip,.services-section,.process-section,.expertise-section,.personal-section,.faq-section,.why-section,.home-work-section,.pathway-section,.portfolio-section,.contact-section,.proof-section,.about-evidence,.solution-journey,.service-detail-process{background:#fff}
-.page-hero{background:#fff}
+.page-hero{background:linear-gradient(135deg,#cfe6f1 0%,#e6f2f7 100%)}
 .trust-strip{border-color:var(--line)}
 .bento-1{background:#fff;border-color:var(--line)}
 .process-section{background:#fff}
