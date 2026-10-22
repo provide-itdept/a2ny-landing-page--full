@@ -1,4 +1,4 @@
-import { Cable, Cloud, Code2, Cpu, Database, LockKeyhole, MonitorCog, Network, Server, ShieldCheck, Wrench } from 'lucide-react'
+import { Cable, Cloud, Code2, Cpu, Database, DoorOpen, HardDrive, LockKeyhole, MonitorCog, Network, Server, ShieldCheck, Wrench } from 'lucide-react'
 
 export const services = [
   { slug: 'managed-it-services', title: 'Managed IT Support', description: 'Practical, responsive support that keeps day-to-day technology dependable.', icon: MonitorCog },
@@ -8,6 +8,10 @@ export const services = [
   { slug: 'web-development', title: 'Website Creation & Web Development', description: 'Professional business website creation, responsive web development, and custom tools designed around how your team works.', icon: Code2 },
   { slug: 'microsoft-365', title: 'Microsoft 365 & Cloud', description: 'Cloud productivity, identity, collaboration, and migration support.', icon: Cloud },
   { slug: 'computer-repair', title: 'Computer Repair & Maintenance', description: 'Reliable computer repair, laptop troubleshooting, hardware upgrades, malware cleanup, and maintenance for home and business users.', icon: Wrench },
+  { slug: 'board-level-repair', title: 'Computer & Laptop Board-Level Repair', description: 'Component-level diagnostics and repair for laptops, desktops, charging faults, power issues, and damaged circuit boards.', icon: HardDrive },
+  { slug: 'smart-door-lock-installation', title: 'Smart Door Lock Setup & Installation', description: 'Smart lock selection, installation, setup, access configuration, and handover for homes and businesses.', icon: DoorOpen },
+  { slug: 'cctv-access-control', title: 'CCTV & Access Control', description: 'Practical camera, recording, and access-control installations for safer homes, offices, and small businesses.', icon: LockKeyhole },
+  { slug: 'data-recovery', title: 'Data Recovery & Migration', description: 'Careful data transfer, recovery assessment, device migration, and backup planning for important files.', icon: Database },
   { slug: 'it-consulting', title: 'IT Consulting', description: 'Straightforward technical direction for infrastructure and business decisions.', icon: Cpu },
 ]
 
@@ -43,6 +47,10 @@ export const serviceDetails = [
   { slug: 'database-management', title: 'Database Management', description: 'Database setup, maintenance, backup, and performance support.', icon: Database, body: 'Keep business data systems structured, maintainable, and recoverable.', points: ['PostgreSQL setup and maintenance', 'Backup and restore planning', 'Access control and performance review'] },
   { slug: 'it-monitoring', title: 'IT Monitoring', description: 'Visibility into system health, availability, and operational issues.', icon: MonitorCog, body: 'Create useful operational visibility so issues can be acted on before they become business interruptions.', points: ['Health and availability monitoring', 'Alert priorities and escalation paths', 'Reporting and operational documentation'] },
   { slug: 'voip-solutions', title: 'VoIP Solutions', description: 'Business voice and call-routing support for connected teams.', icon: Cable, body: 'Plan voice services around connectivity, users, call flows, and support requirements.', points: ['Voice requirements and call-flow planning', 'Network readiness and configuration', 'User handover and support documentation'] },
+  { slug: 'board-level-repair', title: 'Computer & Laptop Board-Level Repair', description: 'Component-level diagnostics and repair for laptops, desktops, charging faults, power issues, and damaged circuit boards.', icon: HardDrive, body: 'Assess hardware faults at board level before recommending replacement. Repair scope depends on the device, fault, parts availability, and data requirements.', points: ['Power, charging, display, and no-boot diagnostics', 'Component-level repair assessment', 'Repair recommendations with clear risk and cost context'] },
+  { slug: 'smart-door-lock-installation', title: 'Smart Door Lock Setup & Installation', description: 'Smart lock selection, installation, setup, access configuration, and handover for homes and businesses.', icon: DoorOpen, body: 'Plan and install smart entry hardware around the door, users, access policy, connectivity, and everyday support needs.', points: ['Lock and door compatibility assessment', 'Installation, app setup, and access enrolment', 'User handover, recovery method, and basic support'] },
+  { slug: 'cctv-access-control', title: 'CCTV & Access Control', description: 'Practical camera, recording, and access-control installations for safer homes, offices, and small businesses.', icon: LockKeyhole, body: 'Improve visibility and entry control with a scoped installation that considers coverage, storage, privacy, and maintainability.', points: ['Coverage and placement planning', 'Camera, recorder, and network setup', 'Access review and handover documentation'] },
+  { slug: 'data-recovery', title: 'Data Recovery & Migration', description: 'Careful data transfer, recovery assessment, device migration, and backup planning for important files.', icon: Database, body: 'Handle device changes and storage problems carefully, with an emphasis on preserving data and setting up a safer next step.', points: ['Recovery assessment before intervention', 'Device-to-device migration and verification', 'Backup recommendations for future resilience'] },
 ]
 
 export const solutions = [
@@ -71,4 +79,10 @@ export const articles = [
 
 export const projects = [
   { slug: 'project-template', title: 'Project story template', industry: 'Add verified client project', challenge: 'Client-approved project details should be added here.', solution: 'Describe the implemented solution only after it has been confirmed.', result: 'Publish measured, verified outcomes when available.' },
+]
+
+export const portfolioItems = [
+  { slug: 'business-network-installation', title: 'Business network installation', category: 'Network infrastructure', image: '/images/service-network-installation.png', summary: 'Structured cabling, rack organization, switching, Wi-Fi, and documentation for a dependable office network.', tags: ['Structured cabling', 'Network setup', 'Documentation'] },
+  { slug: 'board-level-device-repair', title: 'Laptop board-level repair', category: 'Device repair', image: '/images/service-board-repair.png', summary: 'Careful diagnostics and repair assessment for power, charging, no-boot, and component-level device faults.', tags: ['Laptop repair', 'Diagnostics', 'Hardware service'] },
+  { slug: 'smart-entry-installation', title: 'Smart entry installation', category: 'Smart access', image: '/images/service-smart-lock.png', summary: 'Smart door lock installation with access setup, user handover, and a practical recovery plan.', tags: ['Smart lock', 'Installation', 'Access setup'] },
 ]
