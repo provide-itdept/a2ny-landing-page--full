@@ -406,3 +406,118 @@ test('validation summary supports keyboard activation and removes corrected fiel
     await expect(summary.getByRole('button', { name: 'Contact number', exact: true })).toHaveCount(0);
   }
 });
+
+
+test('skip link bypasses navigation and continues through main content', async ({ page }) => {
+  for (const path of ['/', '/contact', '/request-quote']) {
+    await page.goto(path);
+    const skip = page.getByRole('link', { name: 'Skip to main content', exact: true });
+    const main = page.locator('#main-content');
+    const hiddenBounds = await skip.boundingBox();
+    expect(hiddenBounds.y + hiddenBounds.height).toBeLessThan(0);
+    await page.keyboard.press('Tab');
+    await expect(skip).toBeFocused();
+    await expect(skip).toBeInViewport();
+    await expect(skip).toHaveCSS('outline-width', '3px');
+    await page.keyboard.press('Enter');
+    await expect(main).toBeFocused();
+    await expect(page).toHaveURL(new RegExp(path === '/' ? '/#main-content$' : path + '#main-content$'));
+    await page.keyboard.press('Tab');
+    expect(await main.evaluate(element => element.contains(document.activeElement))).toBe(true);
+    const restoredBounds = await skip.boundingBox();
+    expect(restoredBounds.y + restoredBounds.height).toBeLessThan(0);
+  }
+});
+
+
+test('reduced motion shortens CSS effects and preserves portfolio navigation', async ({ page }) => {
+  await page.emulateMedia({ reducedMotion: 'no-preference' });
+  await page.goto('/portfolio');
+  const card = page.locator('.portfolio-card').first();
+  await expect(card).toBeVisible();
+  await expect(card).toHaveCSS('transition-duration', '0.25s');
+  await page.emulateMedia({ reducedMotion: 'reduce' });
+  await expect.poll(() => card.evaluate(el => parseFloat(getComputedStyle(el).transitionDuration))).toBeLessThanOrEqual(0.00001);
+  await expect(page.locator('html')).toHaveCSS('scroll-behavior', 'auto');
+  const link = card.locator('a').first();
+  const destination = await link.getAttribute('href');
+  await link.focus();
+  await expect(link).toBeFocused();
+  await page.keyboard.press('Enter');
+  await expect(page).toHaveURL(new RegExp(destination + '$'));
+  await page.emulateMedia({ reducedMotion: 'no-preference' });
+  await page.goto('/portfolio');
+  await expect(card).toHaveCSS('transition-duration', '0.25s');
+});
+
+
+test('home reduced motion keeps hero and process static with usable consultation CTA', async ({ page }) => {
+  await page.emulateMedia({ reducedMotion: 'reduce' });
+  await page.goto('/');
+  const hero = page.locator('.hero-grid > div').first();
+  const visual = page.locator('.hero-visual-wrap');
+  // Sample multiple rendered frames: final-state-only checks would miss motion.
+  const samples = await page.locator('.hero-grid').evaluate(async el => {
+    const values = [];
+    for (let frame = 0; frame < 30; frame++) {
+      await new Promise(requestAnimationFrame);
+      values.push([...el.children].map(child => {
+        const style = getComputedStyle(child);
+        return { opacity: style.opacity, transform: style.transform };
+      }));
+    }
+    return values.flat();
+  });
+  for (const sample of samples) {
+    expect(sample.opacity).toBe('1');
+    expect(['none', 'matrix(1, 0, 0, 1, 0, 0)']).toContain(sample.transform);
+  }
+  await expect(hero).toBeVisible();
+  await expect(visual).toBeVisible();
+  const steps = page.locator('.timeline-step');
+  await steps.first().scrollIntoViewIfNeeded();
+  for (const step of await steps.all()) {
+    await expect(step).toHaveCSS('opacity', '1');
+    await expect(step).toHaveCSS('transform', 'none');
+  }
+  const cta = page.getByRole('link', { name: 'Get a free consultation' });
+  await cta.focus();
+  await expect(cta).toBeFocused();
+  await page.keyboard.press('Enter');
+  await expect(page).toHaveURL(/\/request-quote$/);
+  await page.emulateMedia({ reducedMotion: 'no-preference' });
+  await page.goto('/');
+  await expect(hero).toHaveCSS('opacity', '1');
+  await expect(visual).toHaveCSS('opacity', '1');
+  await expect(visual).toHaveCSS('transform', 'none');
+});
+
+
+test('navigation decorative icons stay out of accessible controls', async ({ page }) => {
+  await page.goto('/');
+  const header = page.locator('.site-header');
+  const toggle = header.locator('.menu-toggle');
+  if (await toggle.isVisible()) {
+    await expect(toggle).toHaveAccessibleName('Open menu');
+    await toggle.click();
+    await expect(toggle).toHaveAccessibleName('Close menu');
+  }
+  const trigger = header.locator('.nav-dropdown > button').first();
+  const label = (await trigger.innerText()).trim();
+  await expect(trigger).toHaveAccessibleName(label);
+  await trigger.focus();
+  await page.keyboard.press('Enter');
+  await expect(trigger).toHaveAttribute('aria-expanded', 'true');
+  const link = header.locator('.nav-dropdown').first().locator('.dropdown-menu a').first();
+  await expect(link).toBeVisible();
+  await expect(link).toHaveAccessibleName((await link.innerText()).trim());
+  for (const icon of await header.locator('.nav-dropdown svg, .menu-toggle svg').all()) {
+    await expect(icon).toHaveAttribute('aria-hidden', 'true');
+    await expect(icon).toHaveAttribute('focusable', 'false');
+  }
+  await page.keyboard.press('Tab');
+  await expect(link).toBeFocused();
+  const destination = await link.getAttribute('href');
+  await page.keyboard.press('Enter');
+  await expect(page).toHaveURL(new RegExp(destination + '$'));
+});
