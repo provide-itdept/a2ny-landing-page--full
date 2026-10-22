@@ -521,3 +521,39 @@ test('navigation decorative icons stay out of accessible controls', async ({ pag
   await page.keyboard.press('Enter');
   await expect(page).toHaveURL(new RegExp(destination + '$'));
 });
+
+
+test('dropdown navigation identifies only the current page after route changes', async ({ page }) => {
+  await page.goto('/');
+  const nav = page.getByRole('navigation', { name: 'Main navigation' });
+  const home = nav.getByRole('link', { name: 'Home', exact: true });
+  const toggle = page.locator('.menu-toggle');
+  const reveal = async () => {
+    if (await toggle.isVisible() && await toggle.getAttribute('aria-expanded') === 'false') await toggle.click();
+    const trigger = nav.locator('.nav-dropdown > button').first();
+    if (await trigger.getAttribute('aria-expanded') === 'false') await trigger.click();
+  };
+  await reveal();
+  await expect(home).toHaveAttribute('aria-current', 'page');
+  const links = nav.locator('.nav-dropdown').first().locator('.dropdown-menu a');
+  const first = links.nth(0);
+  const second = links.nth(1);
+  const firstPath = await first.getAttribute('href');
+  await first.focus();
+  await page.keyboard.press('Enter');
+  await expect(page).toHaveURL(new RegExp(firstPath + '$'));
+  await reveal();
+  await expect(first).toHaveAttribute('aria-current', 'page');
+  await expect(first).toHaveClass(/active/);
+  await expect(first).toHaveCSS('color', 'rgb(14, 120, 199)');
+  await expect(home).not.toHaveAttribute('aria-current', 'page');
+  await expect(nav.locator('[aria-current="page"]')).toHaveCount(1);
+  const secondPath = await second.getAttribute('href');
+  await second.focus();
+  await page.keyboard.press('Enter');
+  await expect(page).toHaveURL(new RegExp(secondPath + '$'));
+  await reveal();
+  await expect(second).toHaveAttribute('aria-current', 'page');
+  await expect(first).not.toHaveAttribute('aria-current', 'page');
+  await expect(nav.locator('[aria-current="page"]')).toHaveCount(1);
+});
