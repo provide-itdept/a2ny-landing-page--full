@@ -17,3 +17,65 @@
 @layer utilities {
   .focus-ring:focus-visible { outline: 3px solid #f45b69; outline-offset: 4px; }
 }
+
+@layer components {
+  .section-heading { @apply mb-10 max-w-2xl; }
+  .section-heading.center { @apply mx-auto text-center; }
+  .section-heading h2 { @apply mt-2 text-3xl font-black tracking-[-.04em] text-ink md:text-5xl md:leading-[1.08]; }
+  .section-heading p { @apply mt-5 text-[15px] leading-7 text-muted md:text-base; }
+  .premium-hero h1 { @apply max-w-3xl text-5xl font-black leading-[.98] tracking-[-.055em] md:text-7xl; }
+  .premium-hero h1 em { @apply not-italic text-cyan; }
+  .premium-hero .eyebrow { @apply text-cyan; }
+  .page-hero h1 { @apply max-w-4xl text-4xl font-black tracking-[-.05em] text-ink md:text-6xl; }
+  .page-hero p { @apply mt-5 max-w-2xl text-lg leading-8 text-muted; }
+  .contact-hero .eyebrow, .contact-hero h1 { @apply text-white; }
+  .contact-hero p { @apply text-blue/80; }
+  .service-groups > div > .eyebrow { @apply mb-5 text-ink; }
+  .service-card h3 { @apply text-xl font-black tracking-[-.025em] text-ink; }
+  .service-card p { @apply mt-3 text-sm leading-6 text-muted; }
+  .service-card .card-link { @apply mt-auto flex items-center gap-2 pt-6 text-sm font-extrabold text-blue; }
+  .service-card::after { content: ''; @apply pointer-events-none absolute -bottom-10 -right-10 h-28 w-28 rounded-full border border-blue/20 transition group-hover:scale-125 group-hover:border-blue/40; }
+  .proof-card b { @apply font-mono text-3xl font-black text-blue; }
+  .proof-card h3 { @apply mt-5 text-lg font-black text-ink; }
+  .proof-card p { @apply mt-2 text-sm leading-6 text-muted; }
+  .service-promo-card img { @apply h-60 w-full object-cover; }
+  .service-promo-card > div { @apply p-7; }
+  .service-promo-card h2 { @apply text-2xl font-black tracking-[-.03em] text-ink; }
+  .service-promo-card p { @apply my-3 text-sm leading-6 text-muted; }
+  .evidence-grid > div { @apply rounded-2xl border border-line bg-white p-6; }
+  .evidence-grid b { @apply text-sm font-black text-ink; }
+  .evidence-grid p { @apply mt-2 text-sm leading-6 text-muted; }
+  .industry-index { @apply float-right font-mono text-sm font-bold text-blue; }
+  .industry-card h2, .solution-card h2 { @apply mt-5 text-2xl font-black tracking-[-.03em] text-ink; }
+  .industry-card p, .solution-card p { @apply my-4 text-sm leading-6 text-muted; }
+  .solution-card .text-link, .industry-card .text-link { @apply mt-auto; }
+  .journey-grid > div { @apply rounded-2xl border border-line bg-white p-7 shadow-sm; }
+  .journey-grid b { @apply font-mono text-3xl font-black text-blue; }
+  .journey-grid h3 { @apply mt-6 text-xl font-black text-ink; }
+  .journey-grid p { @apply mt-2 text-sm leading-6 text-muted; }
+  .portfolio-intro h2 { @apply mt-2 text-3xl font-black tracking-[-.04em] text-ink md:text-4xl; }
+  .portfolio-intro > p { @apply max-w-xl text-sm leading-7 text-muted; }
+  .portfolio-card img { @apply h-64 w-full object-cover; }
+  .portfolio-card-body h2 { @apply mt-2 text-xl font-black text-ink; }
+  .portfolio-card-body > p { @apply mt-3 text-sm leading-6 text-muted; }
+  .main-nav > a, .main-nav > div > button { @apply inline-flex items-center gap-1 rounded-lg px-2 py-2 transition hover:bg-blue/10 hover:text-blue; }
+  .dropdown-menu a { @apply flex items-center justify-between rounded-lg px-3 py-2.5 text-sm font-semibold text-slate-600 transition hover:bg-blue/10 hover:text-blue; }
+  .hero-photo-card img { @apply h-full w-full object-cover; }
+  .pathway-card h2 { @apply text-xl font-black tracking-[-.02em] text-ink; }
+  .pathway-card p { @apply my-3 min-h-[72px] text-sm leading-6 text-muted; }
+  .pathway-links a { @apply flex items-center justify-between transition hover:translate-x-1 hover:text-blue; }
+  .bento-card h3 { @apply mt-5 max-w-[80%] text-xl font-black tracking-[-.02em]; }
+  .bento-card p { @apply mt-2 max-w-[34rem] text-sm leading-6 text-muted; }
+  .bento-4 p, .bento-4 .card-link { @apply text-blue/80; }
+  .trust-inner > p { @apply max-w-sm text-sm font-semibold text-slate-200; }
+  .trust-list { @apply text-slate-200; }
+  .trust-list span { @apply inline-flex items-center gap-1.5; }
+  .home-work-card .eyebrow { @apply mb-0; }
+  .faq-list summary svg { @apply shrink-0 transition; }
+  .faq-list details[open] summary svg { @apply rotate-180; }
+  .personal-card .button-light { @apply shrink-0; }
+  .cta-inner h2 { @apply mt-2 text-3xl font-black tracking-[-.04em] md:text-5xl; }
+  .cta-inner p { @apply mx-auto my-5 max-w-xl text-base leading-7 text-blue/80; }
+  .pathway-section, .why-section, .home-work-section, .expertise-section, .faq-section { background-image: radial-gradient(circle at 10% 10%, rgba(37,99,235,.06), transparent 22%), linear-gradient(rgba(255,255,255,.34) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.34) 1px, transparent 1px); background-size: auto, 32px 32px, 32px 32px; }
+  .home-work-card, .portfolio-card { @apply shadow-[0_18px_45px_rgba(15,23,42,.1)]; }
+}

@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom'
 import Seo from '../components/Seo'
 import Button from '../components/Button'
 import SectionHeading from '../components/SectionHeading'
+import JsonLd from '../components/JsonLd'
 import { faqs, portfolioItems, processSteps, services } from '../data/content'
 
 const reveal = { hidden: { opacity: 0, y: 18 }, show: { opacity: 1, y: 0, transition: { duration: .45 } } }
@@ -29,7 +30,8 @@ export default function Home() {
   const reducedMotion = useReducedMotion()
   const revealVariant = reducedMotion ? { hidden: { opacity: 1, y: 0 }, show: { opacity: 1, y: 0, transition: { duration: 0 } } } : reveal
   return <>
-    <Seo title="Web Development & Computer Repair Philippines | A2NY IT WORKS" description="A2NY IT WORKS creates professional business websites and provides dependable computer repair and maintenance in the Philippines, alongside practical IT support, networks, servers, and cybersecurity." />
+    <Seo title="Web Development & IT Support Philippines | A2NY IT WORKS" description="A2NY IT WORKS builds professional business websites and provides dependable computer repair, IT support, networks, servers, and cybersecurity across the Philippines." />
+    <JsonLd data={{ '@context': 'https://schema.org', '@type': 'ProfessionalService', name: 'A2NY IT WORKS', url: 'https://a2nyitworks.com', logo: 'https://a2nyitworks.com/a2ny-logo-premium.png', image: 'https://a2nyitworks.com/images/case-network-rack.png', description: 'Professional web development, IT support, computer repair, network infrastructure, and cybersecurity services in the Philippines.', areaServed: 'Philippines', serviceType: ['Web development', 'Computer repair', 'IT support', 'Network installation', 'Cybersecurity'] }} />
     <section className={tw("premium-hero")}><div className={tw("container hero-grid")}>
       <motion.div initial={reducedMotion ? false : "hidden"} animate="show" variants={revealVariant}>
         <span className={tw("eyebrow")}>Business technology <i /> Home & office support <i /> Philippines</span>
